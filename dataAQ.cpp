@@ -60,7 +60,9 @@ bool compareVecOverall(stateHosp* left, stateHosp* right) {
 }
 
 bool comparePov(stateDemog* left, stateDemog* right) {
-    return left->getBelowPovertyCount() < right->getBelowPovertyCount();
+    double left1 = left->getBelowPovertyCount()/left->getPop();
+    double right1 = right->getBelowPovertyCount()/right->getPop();
+    return left1 < right1;
 }
 
 bool compareMort(std::pair<std::string, stateHosp *> left, std::pair<std::string, stateHosp *> right) {
@@ -150,11 +152,12 @@ void dataAQ::sortStateDemogPovLevelHighLow(std::vector<stateDemog*>& povLevelHig
         povLevelHighLow.push_back(it->second);
     }
     std::sort(povLevelHighLow.begin(), povLevelHighLow.end(), comparePov);
+    std::reverse(povLevelHighLow.begin(), povLevelHighLow.end());
     for(int i=0; i<10;i++){
         cout<<i<<" "<<povLevelHighLow[i]->getState()<<" ";
         cout<<"poverty level: "<<povLevelHighLow[i]->getBelowPovertyCount()<<endl;
     }
-    std::reverse(povLevelHighLow.begin(), povLevelHighLow.end());
+    
 }
 
 
