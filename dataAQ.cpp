@@ -122,10 +122,10 @@ void dataAQ::sortStateHospRatingLowHigh(std::vector<stateHosp *>& hospLowToHigh)
         hospLowToHigh.push_back(it->second);
     }
     std::sort(hospLowToHigh.begin(), hospLowToHigh.end(), compareVecOverall);
-    std::reverse(hospHighToLow.begin(), hospHighToLow.end());
+    std::reverse(hospLowToHigh.begin(), hospLowToHigh.end());
     for(int i=0; i<10;i++){
-        cout<<i<<" "<<hospHighToLow[i]->getState()<<" ";
-        cout<<"overall hospital rating: "<<hospHighToLow[i]->getOverallRate()<<endl;
+        cout<<i<<" "<<hospLowToHigh[i]->getState()<<" ";
+        cout<<"overall hospital rating: "<<hospLowToHigh[i]->getOverallRate()<<endl;
     }
 }
 
@@ -137,6 +137,10 @@ void dataAQ::sortStateDemogPovLevelLowHigh(std::vector<stateDemog*>& incomeHighL
     }
     std::sort(incomeHighLow.begin(), incomeHighLow.end(), comparePov);
     std::reverse(incomeHighLow.begin(), incomeHighLow.end());
+    for(int i=0; i<10;i++){
+        cout<<i<<" "<<incomeHighLow[i]->getState()<<" ";
+        cout<<"poverty level: "<<incomeHighLow[i]->getBelowPovertyCount()<<endl;
+    }
 }
 
 void dataAQ::sortStateDemogPovLevelHighLow(std::vector<stateDemog*>& povLevelHighLow) {
@@ -146,7 +150,10 @@ void dataAQ::sortStateDemogPovLevelHighLow(std::vector<stateDemog*>& povLevelHig
         povLevelHighLow.push_back(it->second);
     }
     std::sort(povLevelHighLow.begin(), povLevelHighLow.end(), comparePov);
-    
+    for(int i=0; i<10;i++){
+        cout<<i<<" "<<povLevelHighLow[i]->getState()<<" ";
+        cout<<"poverty level: "<<povLevelHighLow[i]->getBelowPovertyCount()<<endl;
+    }
 
 }
 
