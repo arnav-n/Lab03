@@ -53,8 +53,14 @@ cout << "Testing hospital sort..." << endl;
     std::vector<stateHosp*> hospHighToLow;
     theAnswers.sortStateHospRatingHighLow(hospHighToLow);
     cout<<endl;
-    std::vector<stateDemog*> povHighToLow;
-    theAnswers.sortStateDemogPovLevelHighLow(povHighToLow);
+
+    std::vector<stateHosp*> hospLowToHigh;
+    theAnswers.sortStateHospRatingLowHigh(hospLowToHigh);
+    cout<<endl;
+
+
+    // std::vector<stateDemog*> povHighToLow;
+    // theAnswers.sortStateDemogPovLevelHighLow(povHighToLow);
 
 
     // // Test case #1

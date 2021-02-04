@@ -119,10 +119,10 @@ void dataAQ::sortStateHospRatingHighLow(std::vector<stateHosp *>& hospHighToLow)
     }
     std::sort(hospHighToLow.begin(), hospHighToLow.end(), compareVecOverall);
     std::reverse(hospHighToLow.begin(), hospHighToLow.end());
-    // for(int i=0; i<10;i++){
-    //     cout<<i<<" "<<hospHighToLow[i]->getState()<<" ";
-    //     cout<<"overall hospital rating: "<<hospHighToLow[i]->getOverallRate()<<endl;
-    // }
+    for(int i=0; i<10;i++){
+        cout<<i<<" "<<hospHighToLow[i]->getState()<<" ";
+        cout<<"overall hospital rating: "<<hospHighToLow[i]->getOverallRate()<<endl;
+    }
 }
 
 void dataAQ::sortStateHospRatingLowHigh(std::vector<stateHosp *>& hospLowToHigh) {
@@ -132,12 +132,20 @@ void dataAQ::sortStateHospRatingLowHigh(std::vector<stateHosp *>& hospLowToHigh)
         hospLowToHigh.push_back(it->second);
     }
     std::sort(hospLowToHigh.begin(), hospLowToHigh.end(), compareVecOverall);
-    std::reverse(hospLowToHigh.begin(), hospLowToHigh.end());
-    // for(int i=0; i<10;i++){
-    //     cout<<i<<" "<<hospLowToHigh[i]->getState()<<" ";
-    //     cout<<"overall hospital rating: "<<hospLowToHigh[i]->getOverallRate()<<endl;
-    // }
+    for(int i=0; i<10;i++){
+        cout<<i<<" "<<hospLowToHigh[i]->getState()<<" ";
+        cout<<"overall hospital rating: "<<hospLowToHigh[i]->getOverallRate()<<endl;
+    }
 }
+
+
+
+
+
+
+
+
+
 
 void dataAQ::sortStateDemogPovLevelLowHigh(std::vector<stateDemog*>& incomeHighLow) {
 	//TODO fix
