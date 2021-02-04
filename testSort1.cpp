@@ -52,11 +52,20 @@ cout << "Testing hospital sort..." << endl;
 
     std::vector<stateHosp*> hospHighToLow;
     theAnswers.sortStateHospRatingHighLow(hospHighToLow);
+    for(int i=0; i<10;i++){
+        cout<<i<<" "<<hospHighToLow[i]->getState()<<" ";
+        cout<<"overall hospital rating: "<<hospHighToLow[i]->getOverallRate()<<endl;
+    }
     cout<<endl;
 
     std::vector<stateHosp*> hospLowToHigh;
     theAnswers.sortStateHospRatingLowHigh(hospLowToHigh);
+    for(int i=0; i<10;i++){
+        cout<<i<<" "<<hospLowToHigh[i]->getState()<<" ";
+        cout<<"overall hospital rating: "<<hospLowToHigh[i]->getOverallRate()<<endl;
+    }
     cout<<endl;
+
 
 
     // std::vector<stateDemog*> povHighToLow;
