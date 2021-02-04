@@ -59,10 +59,18 @@ bool compareVecOverall(stateHosp* left, stateHosp* right) {
         return left->getOverallRate() < right->getOverallRate();
 }
 
+
 bool comparePov(stateDemog* left, stateDemog* right) {
-    double left1 = left->getBelowPovertyCount()/left->getPop();
-    double right1 = right->getBelowPovertyCount()/right->getPop();
-    return left1 < right1;
+    double Lpovc = left->getBelowPovertyCount();
+    double Lcount = left->getPop();
+    double LbelowPercent = Lpovc/Lcount;
+
+    double Rpovc = right->getBelowPovertyCount();
+    double Rcount = right->getPop();
+    double RbelowPercent = Rpovc/Rcount;
+
+
+    return LbelowPercent < RbelowPercent;
 }
 
 bool compareMort(std::pair<std::string, stateHosp *> left, std::pair<std::string, stateHosp *> right) {
@@ -145,17 +153,23 @@ void dataAQ::sortStateDemogPovLevelLowHigh(std::vector<stateDemog*>& incomeHighL
     }
 }
 
+
 void dataAQ::sortStateDemogPovLevelHighLow(std::vector<stateDemog*>& povLevelHighLow) {
 	//TODO fix
     map<string, stateDemog*>:: iterator it;
     for (it = allStateDemogData.begin(); it!=allStateDemogData.end(); it++){
         povLevelHighLow.push_back(it->second);
     }
+
     std::sort(povLevelHighLow.begin(), povLevelHighLow.end(), comparePov);
     std::reverse(povLevelHighLow.begin(), povLevelHighLow.end());
     for(int i=0; i<10;i++){
+        double povc = povLevelHighLow[i]->getBelowPovertyCount();
+        double count = povLevelHighLow[i]->getPop();
+
+        double belowPercent = povc/count;
         cout<<i<<" "<<povLevelHighLow[i]->getState()<<" ";
-        cout<<"poverty level: "<<povLevelHighLow[i]->getBelowPovertyCount()<<endl;
+        cout<<"poverty level: "<<belowPercent<<endl;
     }
     
 }
