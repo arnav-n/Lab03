@@ -23,7 +23,9 @@ void stateHosp::addHosp(shared_ptr<hospitalData> localhosp){
         double temp = 
         (overallRate*numHospitals)+(localhosp->getOverallRate()); 
         temp = temp/(numHospitals+1);
+        // overallRate += localRate;
         overallRate = temp;
+        // setVRcount(getVRcount()+1);
     }
 
     //none of this shit works:

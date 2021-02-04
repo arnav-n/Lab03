@@ -26,6 +26,7 @@ public:
 
   int getRCount() const { return validRCount; }
   int getMCount() const{ return validMCount; }
+  int getVRCount() const { return validRateCount; }
 
   double getOverallRate() const { return overallRate; }
   rating getMortality() const { return mortality; }
@@ -33,6 +34,7 @@ public:
 
   void setMcount(int x){ validMCount = x;};
   void setRcount(int x){ validRCount = x;};
+  void setVRcount(int x){ validRateCount = x;};
   void setMAgg(double x){ mortality.setRatingNum(x);}
   void setRAgg(double x){ readmission.setRatingNum(x);}
 
@@ -41,6 +43,7 @@ private:
   string name; 
   int numHospitals;
   double overallRate;
+  int validRateCount;
   
   //add rating vars for readmit and mort
   rating mortality;
