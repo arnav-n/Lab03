@@ -136,7 +136,7 @@ void dataAQ::sortStateDemogPovLevelLowHigh(std::vector<stateDemog*>& incomeHighL
         incomeHighLow.push_back(it->second);
     }
     std::sort(incomeHighLow.begin(), incomeHighLow.end(), comparePov);
-    std::reverse(incomeHighLow.begin(), incomeHighLow.end());
+    
     for(int i=0; i<10;i++){
         cout<<i<<" "<<incomeHighLow[i]->getState()<<" ";
         cout<<"poverty level: "<<incomeHighLow[i]->getBelowPovertyCount()<<endl;
@@ -154,7 +154,7 @@ void dataAQ::sortStateDemogPovLevelHighLow(std::vector<stateDemog*>& povLevelHig
         cout<<i<<" "<<povLevelHighLow[i]->getState()<<" ";
         cout<<"poverty level: "<<povLevelHighLow[i]->getBelowPovertyCount()<<endl;
     }
-
+    std::reverse(povLevelHighLow.begin(), povLevelHighLow.end());
 }
 
 
