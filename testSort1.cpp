@@ -47,8 +47,8 @@ cout << "Testing hospital sort..." << endl;
     // cout<<"Demographic data for that state is: "<<*(theAnswers.allStateDemogData[lowO])<<endl;
     
     
-    // cout<<theAnswers.HighMortHospRating()<<endl;
-    // cout<<theAnswers.HighReadmitHospRating()<<endl;
+    cout<<theAnswers.HighMortHospRating()<<endl;
+    cout<<theAnswers.HighReadmitHospRating()<<endl;
 
     std::vector<stateHosp*> hospHighToLow;
     theAnswers.sortStateHospRatingHighLow(hospHighToLow);

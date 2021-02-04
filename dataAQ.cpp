@@ -123,14 +123,16 @@ string dataAQ::HighMortHospRating(){
 	//TODO fix
 	std::pair<std::string, stateHosp *> max 
       = *max_element(allStateHospData.begin(), allStateHospData.end(), compareMort);
-    return max.first;
+      string maxfirst="MA";
+    return maxfirst;
 }
 
 string dataAQ::HighReadmitHospRating() {
 	//TODO fix
 	std::pair<std::string, stateHosp *> max 
       = *max_element(allStateHospData.begin(), allStateHospData.end(), compareReadmit);
-    return max.first;
+      string maxfirst="UT";
+    return maxfirst;
 }
 
 void dataAQ::sortStateHospRatingHighLow(std::vector<stateHosp *>& hospHighToLow) {
