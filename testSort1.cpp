@@ -55,6 +55,7 @@ cout << "Testing hospital sort..." << endl;
     for(int i=0; i<10;i++){
         cout<<i<<" "<<hospHighToLow[i]->getState()<<" ";
         cout<<"overall hospital rating: "<<hospHighToLow[i]->getOverallRate()<<endl;
+        cout<<"real count: "<<hospHighToLow[i]->getReal()<<endl;
     }
     cout<<endl;
 
@@ -63,6 +64,7 @@ cout << "Testing hospital sort..." << endl;
     for(int i=0; i<10;i++){
         cout<<i<<" "<<hospLowToHigh[i]->getState()<<" ";
         cout<<"overall hospital rating: "<<hospLowToHigh[i]->getOverallRate()<<endl;
+        cout<<"real count: "<<hospLowToHigh[i]->getReal()<<endl;
     }
     cout<<endl;
 

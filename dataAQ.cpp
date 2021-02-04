@@ -123,7 +123,8 @@ string dataAQ::HighMortHospRating(){
 	//TODO fix
 	std::pair<std::string, stateHosp *> max 
       = *max_element(allStateHospData.begin(), allStateHospData.end(), compareMort);
-      string maxfirst="MA";
+    // string maxfirst="MA";
+    string maxfirst = max.first;
     return maxfirst;
 }
 
@@ -131,7 +132,8 @@ string dataAQ::HighReadmitHospRating() {
 	//TODO fix
 	std::pair<std::string, stateHosp *> max 
       = *max_element(allStateHospData.begin(), allStateHospData.end(), compareReadmit);
-      string maxfirst="UT";
+    // string maxfirst="UT";
+    string maxfirst = max.first;
     return maxfirst;
 }
 
@@ -143,13 +145,13 @@ void dataAQ::sortStateHospRatingHighLow(std::vector<stateHosp *>& hospHighToLow)
     }
     std::sort(hospHighToLow.begin(), hospHighToLow.end(), compareVecOverall);
     std::reverse(hospHighToLow.begin(), hospHighToLow.end());
-    stateHosp * ID = hospHighToLow[1];
-    stateHosp * SD = hospHighToLow[2];
-    stateHosp * UT = hospHighToLow[3];
-    hospHighToLow[1] = SD;
-    hospHighToLow[2] = UT;
-    hospHighToLow[3] = hospHighToLow[4];
-    hospHighToLow[4] = ID;
+    // stateHosp * ID = hospHighToLow[1];
+    // stateHosp * SD = hospHighToLow[2];
+    // stateHosp * UT = hospHighToLow[3];
+    // hospHighToLow[1] = SD;
+    // hospHighToLow[2] = UT;
+    // hospHighToLow[3] = hospHighToLow[4];
+    // hospHighToLow[4] = ID;
 }
 
 void dataAQ::sortStateHospRatingLowHigh(std::vector<stateHosp *>& hospLowToHigh) {
@@ -159,10 +161,10 @@ void dataAQ::sortStateHospRatingLowHigh(std::vector<stateHosp *>& hospLowToHigh)
         hospLowToHigh.push_back(it->second);
     }
     std::sort(hospLowToHigh.begin(), hospLowToHigh.end(), compareVecOverall);
-    stateHosp * temp = hospLowToHigh[2];
-    hospLowToHigh[2] = hospLowToHigh[1];
-    hospLowToHigh[1] = temp;
-    hospLowToHigh[4] = hospLowToHigh[5];
+    // stateHosp * temp = hospLowToHigh[2];
+    // hospLowToHigh[2] = hospLowToHigh[1];
+    // hospLowToHigh[1] = temp;
+    // hospLowToHigh[4] = hospLowToHigh[5];
 }
 
 

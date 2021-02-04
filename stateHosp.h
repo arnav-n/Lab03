@@ -19,6 +19,7 @@ public:
     overallRate = 0;
     validMCount = 0;
     validRCount = 0;
+    validRateCount = 0;
   }
   string getState() const { return name; }
   int getCount() const { return numHospitals; }
@@ -26,7 +27,7 @@ public:
 
   int getRCount() const { return validRCount; }
   int getMCount() const{ return validMCount; }
-  int getVRCount() const { return validRateCount; }
+  int getReal() const { return validRateCount; }
 
   double getOverallRate() const { return overallRate; }
   rating getMortality() const { return mortality; }
@@ -34,7 +35,7 @@ public:
 
   void setMcount(int x){ validMCount = x;};
   void setRcount(int x){ validRCount = x;};
-  void setVRcount(int x){ validRateCount = x;};
+  void setReal(int x){ validRateCount = x;};
   void setMAgg(double x){ mortality.setRatingNum(x);}
   void setRAgg(double x){ readmission.setRatingNum(x);}
 

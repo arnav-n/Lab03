@@ -21,11 +21,11 @@ void stateHosp::addHosp(shared_ptr<hospitalData> localhosp){
     int localRate = localhosp->getOverallRate();
     if (localRate!=-1){
         double temp = 
-        (overallRate*numHospitals)+(localhosp->getOverallRate()); 
-        temp = temp/(numHospitals+1);
+        (overallRate*getReal())+(localhosp->getOverallRate()); 
+        temp = temp/(getReal()+1);
         // overallRate += localRate;
         overallRate = temp;
-        // setVRcount(getVRcount()+1);
+        setReal(getReal()+1);
     }
 
     //none of this shit works:
@@ -47,8 +47,6 @@ void stateHosp::addHosp(shared_ptr<hospitalData> localhosp){
         setRcount(validRcount);
     }
     //until here
-
-    
     numHospitals++;
 }
 
