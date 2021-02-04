@@ -1,6 +1,5 @@
 #ifndef DATAAQ_H
 #define DATAAQ_H
-
 #include <string>
 #include <iostream>
 #include <vector>

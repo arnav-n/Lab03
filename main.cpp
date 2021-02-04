@@ -35,9 +35,9 @@ int main() {
     cout << std::setprecision(2) << std::fixed;
 
     //example from lab02
-    cout << "*** the state that needs the most high schools**" << endl;
-    string needHS = theAnswers.teenPop();
-    cout << *(theAnswers.allStateDemogData[needHS]) << endl;
+    // cout << "*** the state that needs the most high schools**" << endl;
+    // string needHS = theAnswers.teenPop();
+    // cout << *(theAnswers.allStateDemogData[needHS]) << endl;
 
 
     /*EXAMPLE extremum - TODO fix so this works*/

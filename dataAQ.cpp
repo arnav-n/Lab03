@@ -20,13 +20,22 @@ void dataAQ::createStateDemogData(std::vector<shared_ptr<demogData>> theData) {
         //either way now add this county info 
         //this keeps a running total
         allStateDemogData[stateName]->addCountytoState(obj);
-
     }
-
 }
 
 void dataAQ::createStateHospData(std::vector<shared_ptr<hospitalData>> theData) {
 	//TODO fill in
+    for (const auto &obj : theData) {
+        string stateName = obj->getState();
+        //if first state entry, create it
+        if (allStateHospData.count(stateName) < 1) {
+           //cout << "Making a new state entry: " << stateName << endl;
+           allStateHospData[stateName] = new stateHosp(stateName);
+        }
+        //either way now add this county info 
+        //this keeps a running total
+        allStateHospData[stateName]->addHosp(obj);
+    } 
 }
 
 //compare predicate on teen population (on map entry)
@@ -42,42 +51,102 @@ string dataAQ::teenPop()  {
   return min.first; 
 }
 
+
+bool compareOverall(std::pair<std::string, stateHosp *> left1, std::pair<std::string, stateHosp *> right1) {
+        return (left1.second->getOverallRate() < right1.second->getOverallRate());
+}
+bool compareVecOverall(stateHosp* left, stateHosp* right) {
+        return left->getOverallRate() < right->getOverallRate();
+}
+
+bool comparePov(stateDemog* left, stateDemog* right) {
+    return left->getBelowPovertyCount() < right->getBelowPovertyCount();
+}
+
+bool compareMort(std::pair<std::string, stateHosp *> left, std::pair<std::string, stateHosp *> right) {
+        return left.second->getMortality().getRatingNum() < right.second->getMortality().getRatingNum();
+}
+
+bool compareReadmit(std::pair<std::string, stateHosp *> left, std::pair<std::string, stateHosp *> right) {
+        return left.second->getReadmit().getRatingNum() < right.second->getReadmit().getRatingNum();
+}
 /* Lab03 fill in */
 
 string dataAQ::LowHospRating() {
 	//TODO fix
-	return "fixMe";
+	std::pair<std::string, stateHosp *> min  = *min_element(allStateHospData.begin(), allStateHospData.end(), compareOverall);
+    return min.first;
+
 }
 
 string dataAQ::HighHospRating() {
 	//TODO fix
-	return "fixMe";
+    string name = "";
+	std::pair<std::string, stateHosp *> max 
+      = *max_element(allStateHospData.begin(), allStateHospData.end(), compareOverall);
+    return max.first;
 }
 
 string dataAQ::HighMortHospRating(){
 	//TODO fix
-	return "fixMe";
+	std::pair<std::string, stateHosp *> max 
+      = *max_element(allStateHospData.begin(), allStateHospData.end(), compareMort);
+    return max.first;
 }
 
 string dataAQ::HighReadmitHospRating() {
 	//TODO fix
-	return "fixMe";
+	std::pair<std::string, stateHosp *> max 
+      = *max_element(allStateHospData.begin(), allStateHospData.end(), compareReadmit);
+    return max.first;
 }
 
 void dataAQ::sortStateHospRatingHighLow(std::vector<stateHosp *>& hospHighToLow) {
 	//TODO fix
+    map<string, stateHosp*>:: iterator it;
+    for (it = allStateHospData.begin(); it!=allStateHospData.end(); it++){
+        hospHighToLow.push_back(it->second);
+    }
+    std::sort(hospHighToLow.begin(), hospHighToLow.end(), compareVecOverall);
+    std::reverse(hospHighToLow.begin(), hospHighToLow.end());
+    for(int i=0; i<10;i++){
+        cout<<i<<" "<<hospHighToLow[i]->getState()<<" ";
+        cout<<"overall hospital rating: "<<hospHighToLow[i]->getOverallRate()<<endl;
+    }
 }
 
 void dataAQ::sortStateHospRatingLowHigh(std::vector<stateHosp *>& hospLowToHigh) {
 	//TODO fix
+    map<string, stateHosp*>:: iterator it;
+    for (it = allStateHospData.begin(); it!=allStateHospData.end(); it++){
+        hospLowToHigh.push_back(it->second);
+    }
+    std::sort(hospLowToHigh.begin(), hospLowToHigh.end(), compareVecOverall);
+    // std::reverse(hospHighToLow.begin(), hospHighToLow.end());
+    // for(int i=0; i<10;i++){
+    //     cout<<i<<" "<<hospHighToLow[i]->getState()<<" ";
+    //     cout<<"overall hospital rating: "<<hospHighToLow[i]->getOverallRate()<<endl;
+    // }
 }
 
 void dataAQ::sortStateDemogPovLevelLowHigh(std::vector<stateDemog*>& incomeHighLow) {
 	//TODO fix
+   map<string, stateDemog*>:: iterator it;
+    for (it = allStateDemogData.begin(); it!=allStateDemogData.end(); it++){
+        incomeHighLow.push_back(it->second);
+    }
+    std::sort(incomeHighLow.begin(), incomeHighLow.end(), comparePov);
 }
 
 void dataAQ::sortStateDemogPovLevelHighLow(std::vector<stateDemog*>& povLevelHighLow) {
 	//TODO fix
+    map<string, stateDemog*>:: iterator it;
+    for (it = allStateDemogData.begin(); it!=allStateDemogData.end(); it++){
+        povLevelHighLow.push_back(it->second);
+    }
+    std::sort(povLevelHighLow.begin(), povLevelHighLow.end(), comparePov);
+    std::reverse(povLevelHighLow.begin(), povLevelHighLow.end());
+
 }
 
 

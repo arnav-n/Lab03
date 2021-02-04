@@ -127,10 +127,16 @@ shared_ptr<hospitalData> readCSVLineHospital(std::string theLine) {
     string state = getField(ss);
     string type  = getField(ss);
     string temp = getField(ss);
+    int overallRate = stoi(temp);
+
+    string mort = getField(ss);
+    //safety should be ignored?
+    string safety = getField(ss);
+    string readmit = getField(ss);
  
     //TODO you need to read rating data
 
-    return make_shared<hospitalData>(name, state, type);
+    return make_shared<hospitalData>(name, state, type, overallRate, mort, readmit);
 }
 
 //read from a CSV file (for a given data type) return a vector of the 
