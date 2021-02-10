@@ -13,9 +13,6 @@ void stateHosp::addHosp(shared_ptr<hospitalData> localhosp){
     //double check that the hospital's state is this one
     assert(name.compare(localhosp->getState())==0);
 
-
-    
-
     //if the star rating exists, calculate the new average rating
     //otherwise ignore the rating
     int localRate = localhosp->getOverallRate();
@@ -28,7 +25,7 @@ void stateHosp::addHosp(shared_ptr<hospitalData> localhosp){
         setReal(getReal()+1);
     }
 
-    //none of this shit works:
+    //works now
     int localMortNum = localhosp->getMortality().getRatingNum();
     int localReNum = localhosp->getReadmit().getRatingNum();
     int validRcount = getRCount();
@@ -70,7 +67,6 @@ void stateHosp::addHosp(shared_ptr<hospitalData> localhosp){
         setRAgg(temp);
         setRcount(validRcount);
     }
-    //until here
     numHospitals++;
 }
 
