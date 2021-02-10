@@ -4,13 +4,13 @@ CXX=clang++
 #CXXFLAGS= -Wall  -std=c++14
 CXXFLAGS= -Wall  -std=c++14
 
-BINARIES=dataProj testStates testSort
+BINARIES=dataProj testStates sortTest
 
 all: ${BINARIES}
 
 tests: ${BINARIES}
 	./testStates
-	./testSort
+	./sortTest
 
 dataProj: hospitalData.o rating.o dataAQ.o stateHosp.o stateDemog.o demogData.o parse.o main.o
 	${CXX} $^ -o $@
@@ -18,7 +18,7 @@ dataProj: hospitalData.o rating.o dataAQ.o stateHosp.o stateDemog.o demogData.o 
 testStates: hospitalData.o rating.o stateHosp.o testStates.o dataAQ.o stateDemog.o demogData.o parse.o  tddFuncs.o
 	${CXX} $^ -o $@
 
-testSort: hospitalData.o rating.o stateHosp.o testSort1.o dataAQ.o stateDemog.o demogData.o parse.o  tddFuncs.o
+sortTest: hospitalData.o rating.o stateHosp.o testSort1.o dataAQ.o stateDemog.o demogData.o parse.o  tddFuncs.o
 	${CXX} $^ -o $@
 
 clean:

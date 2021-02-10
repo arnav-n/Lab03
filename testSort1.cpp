@@ -46,27 +46,28 @@ cout << "Testing hospital sort..." << endl;
     // cout<<*xs<<endl;
     // cout<<"Demographic data for that state is: "<<*(theAnswers.allStateDemogData[lowO])<<endl;
     
-    
-    cout<<theAnswers.HighMortHospRating()<<endl;
-    cout<<theAnswers.HighReadmitHospRating()<<endl;
-
-    std::vector<stateHosp*> hospHighToLow;
-    theAnswers.sortStateHospRatingHighLow(hospHighToLow);
-    for(int i=0; i<10;i++){
-        cout<<i<<" "<<hospHighToLow[i]->getState()<<" ";
-        cout<<"overall hospital rating: "<<hospHighToLow[i]->getOverallRate()<<endl;
-        cout<<"real count: "<<hospHighToLow[i]->getReal()<<endl;
-    }
     cout<<endl;
-
-    std::vector<stateHosp*> hospLowToHigh;
-    theAnswers.sortStateHospRatingLowHigh(hospLowToHigh);
-    for(int i=0; i<10;i++){
-        cout<<i<<" "<<hospLowToHigh[i]->getState()<<" ";
-        cout<<"overall hospital rating: "<<hospLowToHigh[i]->getOverallRate()<<endl;
-        cout<<"real count: "<<hospLowToHigh[i]->getReal()<<endl;
-    }
+    cout<<theAnswers.HighMortHospRating()<<" == MA"<<endl;
     cout<<endl;
+    cout<<theAnswers.HighReadmitHospRating()<<" == UT"<<endl;
+
+    // std::vector<stateHosp*> hospHighToLow;
+    // theAnswers.sortStateHospRatingHighLow(hospHighToLow);
+    // for(int i=0; i<10;i++){
+    //     cout<<i<<" "<<hospHighToLow[i]->getState()<<" ";
+    //     cout<<"overall hospital rating: "<<hospHighToLow[i]->getOverallRate()<<endl;
+    //     cout<<"real count: "<<hospHighToLow[i]->getReal()<<endl;
+    // }
+    // cout<<endl;
+
+    // std::vector<stateHosp*> hospLowToHigh;
+    // theAnswers.sortStateHospRatingLowHigh(hospLowToHigh);
+    // for(int i=0; i<10;i++){
+    //     cout<<i<<" "<<hospLowToHigh[i]->getState()<<" ";
+    //     cout<<"overall hospital rating: "<<hospLowToHigh[i]->getOverallRate()<<endl;
+    //     cout<<"real count: "<<hospLowToHigh[i]->getReal()<<endl;
+    // }
+    // cout<<endl;
 
 
 

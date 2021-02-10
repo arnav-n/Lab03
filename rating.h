@@ -27,12 +27,12 @@ class rating {
         phrase = inRating;
         //to do: depending on the rating, add a value to the aggregated score
         if(inRating=="Below")
-            aggregated=-1;
+            aggregated=3;
         else if (inRating=="Same")
-            aggregated=0;
+            aggregated=6;
         else if (inRating=="Above")
-            aggregated=1;
-        else aggregated=-999;
+            aggregated=9;
+        else aggregated=-1;
     }
 
     //a method to return a string based on the current rating TODO complete

@@ -29,21 +29,45 @@ void stateHosp::addHosp(shared_ptr<hospitalData> localhosp){
     }
 
     //none of this shit works:
-    int lmNum = localhosp->getMortality().getRatingNum();
-    int lrNum = localhosp->getReadmit().getRatingNum();
+    int localMortNum = localhosp->getMortality().getRatingNum();
+    int localReNum = localhosp->getReadmit().getRatingNum();
     int validRcount = getRCount();
     int validMcount = getMCount();
     //if the local hospital has a data entry, add the number value to the state's number value, using the same algo as the avg
-    if (lmNum!=-999){
-        validMcount++;  
-        setMAgg(getMortality().getRatingNum()+lmNum);
+    if (localMortNum>0){
+        //current average
+        double temp = getMortality().getRatingNum();
+
+        //convert average to total
+        temp*=validMcount;
+
+        //add local count to total
+        temp+=localMortNum;
+
+        //increase the valid counter, convert total back to average
+        validMcount++;
+        temp/=validMcount;
+
+        //set the mortality rating's count to the new value
+        setMAgg(temp);
         setMcount(validMcount);
     }
-    if (lrNum!=-999){
-        double temp = (getReadmit().getRatingNum()*validRcount)+lrNum; 
-        temp = temp/(validRcount+1);
+    if (localReNum>0){
+        //current average
+        double temp = getReadmit().getRatingNum();
+
+        //convert average to total
+        temp*=validRcount;
+
+        //add local count to total
+        temp+=localReNum;
+
+        //increase the valid counter, convert total back to average
         validRcount++;
-        getReadmit().setRatingNum(temp);
+        temp/=validRcount;
+
+         //set the mortality rating's count to the new value
+        setRAgg(temp);
         setRcount(validRcount);
     }
     //until here

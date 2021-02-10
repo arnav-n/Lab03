@@ -101,8 +101,10 @@ string dataAQ::HighMortHospRating(){
 	//TODO fix
 	std::pair<std::string, stateHosp *> max 
       = *max_element(allStateHospData.begin(), allStateHospData.end(), compareMort);
-    string maxfirst="MA";
-    // string maxfirst = max.first;
+    // string maxfirst="MA";
+    string maxfirst = max.first;
+    cout<<"Highest Mortality State:"<<maxfirst<<endl;
+    cout<<"Mortality rating: "<<max.second->getMortality();
     return maxfirst;
 }
 
@@ -110,8 +112,10 @@ string dataAQ::HighReadmitHospRating() {
 	//TODO fix
 	std::pair<std::string, stateHosp *> max 
       = *max_element(allStateHospData.begin(), allStateHospData.end(), compareReadmit);
-    string maxfirst="UT";
-    // string maxfirst = max.first;
+    // string maxfirst="UT";
+    string maxfirst = max.first;
+    cout<<"Highest Readmission State:"<<maxfirst<<endl;
+    cout<<"Readmission rating: "<<max.second->getReadmit();
     return maxfirst;
 }
 

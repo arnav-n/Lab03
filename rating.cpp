@@ -18,8 +18,8 @@ double rating::getRatingNum() const{
 
 void rating::setRatingNum(double input){
 	aggregated = input;
-	if (aggregated<-900) phrase = "None";
-	else if(aggregated<0) phrase="Below";
-	else if(aggregated==0) phrase="Same";
-	else if(aggregated>0) phrase="Above";
+	if (aggregated<0) phrase = "None";
+	else if(aggregated>=3 and aggregated<5) phrase="Below";
+	else if(aggregated>=5 and aggregated<7) phrase="Same";
+	else if(aggregated>7) phrase="Above";
 }
