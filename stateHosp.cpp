@@ -25,46 +25,28 @@ void stateHosp::addHosp(shared_ptr<hospitalData> localhosp){
         setReal(getReal()+1);
     }
 
-    //works now
     int localMortNum = localhosp->getMortality().getRatingNum();
-    int localReNum = localhosp->getReadmit().getRatingNum();
-    int validRcount = getRCount();
     int validMcount = getMCount();
-    //if the local hospital has a data entry, add the number value to the state's number value, using the same algo as the avg
+    //if rating is valid, add to current average
     if (localMortNum>0){
-        //current average
-        double temp = getMortality().getRatingNum();
-
         //convert average to total
-        temp*=validMcount;
-
+        mortality*=validMcount;
         //add local count to total
-        temp+=localMortNum;
-
+        mortality+=localhosp->getMortality();
         //increase the valid counter, convert total back to average
         validMcount++;
-        temp/=validMcount;
-
-        //set the mortality rating's count to the new value
-        setMAgg(temp);
+        mortality/=validMcount;
+        //set variable to new mCount
         setMcount(validMcount);
     }
+
+    int localReNum = localhosp->getReadmit().getRatingNum();
+    int validRcount = getRCount();
     if (localReNum>0){
-        //current average
-        double temp = getReadmit().getRatingNum();
-
-        //convert average to total
-        temp*=validRcount;
-
-        //add local count to total
-        temp+=localReNum;
-
-        //increase the valid counter, convert total back to average
+        readmission*=validRcount;
+        readmission+=localReNum;
         validRcount++;
-        temp/=validRcount;
-
-         //set the mortality rating's count to the new value
-        setRAgg(temp);
+        readmission/=validRcount;
         setRcount(validRcount);
     }
     numHospitals++;
@@ -78,7 +60,5 @@ std::ostream& operator<<(std::ostream &out, const stateHosp &sh){
     out<<"Valid Mcount: "<<sh.getMCount()<<"\n";
     out<<"Readmission Rating: "<<sh.getReadmit();
     out<<"Valid Rcount: "<<sh.getRCount()<<"\n";
-
-
     return out;
 }

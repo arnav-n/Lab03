@@ -49,6 +49,20 @@ class rating {
     }
 
     //TODO write operator overload
+    friend void operator+=(rating &r, const rating &r2){
+        r.setRatingNum(r.aggregated+r2.aggregated);
+    }
+    friend void operator/=(rating &r, double x){
+        r.setRatingNum(r.aggregated/x);
+    }
+    friend void operator*=(rating &r, double x){
+        r.setRatingNum(r.aggregated*x);
+    }
+    
+     friend bool operator<(const rating &r, const rating &r2){
+        return r.aggregated<r2.aggregated;
+    }
+
 
 private:
      //TODO decide what data to represent

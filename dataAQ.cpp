@@ -74,11 +74,11 @@ bool comparePov(stateDemog* left, stateDemog* right) {
 }
 
 bool compareMort(std::pair<std::string, stateHosp *> left, std::pair<std::string, stateHosp *> right) {
-        return left.second->getMortality().getRatingNum() < right.second->getMortality().getRatingNum();
+        return left.second->getMortality()< right.second->getMortality();
 }
 
 bool compareReadmit(std::pair<std::string, stateHosp *> left, std::pair<std::string, stateHosp *> right) {
-        return left.second->getReadmit().getRatingNum() < right.second->getReadmit().getRatingNum();
+        return left.second->getReadmit() < right.second->getReadmit();
 }
 /* Lab03 fill in */
 
